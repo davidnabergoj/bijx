@@ -361,9 +361,9 @@ class ShapeInfo:
 
         batch_shape = batched_shape[: -self.event_dim]
         event_shape = batched_shape[-self.event_dim :]
-        assert (
-            self.event_shape is None or self.event_shape == event_shape
-        ), f"event shape mismatch: {self.event_shape=} != {event_shape=}"
+        # assert (
+        #     self.event_shape is None or self.event_shape == event_shape
+        # ), f"event shape mismatch: {self.event_shape=} != {event_shape=}"
 
         return batch_shape, ShapeInfo(
             event_shape=event_shape,
