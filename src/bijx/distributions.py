@@ -7,6 +7,7 @@ support both sampling and log-density evaluation with automatic batch handling.
 """
 
 from functools import partial
+from typing import Optional
 
 import flax.typing as ftp
 import jax
@@ -189,11 +190,15 @@ class IndependentNormal(ArrayDistribution):
         self,
         batch_shape: tuple[int, ...] = (),
         *,
+        event_shape: Optional[tuple[int, ...]] = None,
         rng: ftp.PRNGKey | None = None,
         **kwargs,
     ) -> tuple[jax.Array, jax.Array]:
         rng = self._get_rng(rng)
-        x = jax.random.normal(rng, batch_shape + self.event_shape)
+        if event_shape is None:
+            x = jax.random.normal(rng, batch_shape + self.event_shape)
+        else:
+            x = jax.random.normal(rng, batch_shape + event_shape)
         return x, self.log_density(x)
 
     def log_density(self, x: ftp.Array, **kwargs) -> jax.Array:
