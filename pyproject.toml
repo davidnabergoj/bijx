@@ -25,8 +25,8 @@ dependencies = [
     "diffrax>=0.6.2",
     "einops>=0.8.0",
     "flax>=0.12.1",
-    "jax>=0.5",
-    "jaxlib>=0.5",
+    "jax==0.5.3",
+    "jaxlib==0.5.3",
     "jax-autovmap>=0.3.0",
     "numpy>=2.0.2",
     "optax>=0.2.4"
