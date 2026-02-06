@@ -24,7 +24,7 @@ dependencies = [
     "chex",
     "diffrax",
     "einops",
-    "flax",
+    "flax>=0.12.1",
     "jax-autovmap",
     "numpy",
     "optax"
